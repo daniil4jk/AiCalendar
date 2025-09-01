@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:h2:/data/AiCalendar/db
+    driver-class-name: org.h2.Driver
+    username:
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  ai:
+    gigachat:
+      scope: GIGACHAT_API_PERS
+      client-id: ${GIGACHAT_CLIENT_ID}
+      client-secret: ${GIGACHAT_CLIENT_SECRET}
+      chat:
+        options:
+          model: GigaChat-2-Pro
+
+  output:
+    ansi:
+      enabled: ALWAYS
+
+secret:
+  jwt:
+    signing-key: ${JWT_SIGNING_KEY}
+    life-time:
+      value: 30
+      unit: MINUTES
+  google:
+    android-client-id: ${GOOGLE_CLOUD_CLIENT_ID}

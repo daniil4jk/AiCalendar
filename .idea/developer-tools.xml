@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="base64-encoder-decoder" pluginVersion="7.1.0">
+    <developerToolsConfigurations>
+      <developerToolConfiguration developerToolId="uuid-generator" id="d71b312f-06af-47b2-965a-201a8c3a141b" name="Workbench">
+        <properties>
+          <property key="version" type="CONFIGURATION" value="UuidVersion|V7" />
+        </properties>
+      </developerToolConfiguration>
+      <developerToolConfiguration developerToolId="base64-encoder-decoder" id="6fc413db-d0a6-49dd-83df-2f9fbdd81472" name="Workbench">
+        <properties>
+          <property key="sourceText" type="INPUT" value="kotlin.String|65542990-89fe-480c-b759-cbf5fd500ba4:45d28f1d-69cb-4506-8619-566b2c83e931" />
+          <property key="targetText" type="INPUT" value="kotlin.String|NjU1NDI5OTAtODlmZS00ODBjLWI3NTktY2JmNWZkNTAwYmE0OjQ1ZDI4ZjFkLTY5Y2ItNDUwNi04NjE5LTU2NmIyYzgzZTkzMQ==" />
+        </properties>
+      </developerToolConfiguration>
+    </developerToolsConfigurations>
+    <expandedGroupNodeIds />
+  </component>
+</project>
