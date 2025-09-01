@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import ru.daniil4jk.aicalendar.db.user.UserEntity;
 import ru.daniil4jk.aicalendar.db.user.UserEntityRepository;
 import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
-import ru.daniil4jk.aicalendar.web.security.jwt.JwtProvider;
+import ru.daniil4jk.aicalendar.web.security.jwt.JwtProductionProvider;
 
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ import java.util.UUID;
 public class GoogleAuthService {
     private final UserEntityRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtProvider tokenProvider;
+    private final JwtProductionProvider tokenProvider;
     private final GoogleIdTokenVerifier googleTokenVerifier;
 
     @Transactional

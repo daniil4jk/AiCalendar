@@ -28,5 +28,8 @@ secret:
     life-time:
       value: 30
       unit: MINUTES
+    test:
+      enabled: ${TEST_MODE_ENABLED}
+      jwt-key: ${TEST_JWT_KEY}
   google:
     android-client-id: ${GOOGLE_CLOUD_CLIENT_ID}

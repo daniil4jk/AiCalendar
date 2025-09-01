@@ -14,6 +14,7 @@ import java.time.temporal.ChronoUnit;
 public class JwtConfig {
     private String signingKey;
     private LifeTime lifeTime;
+    private String testJwtKey;
 
     @Data
     public static class LifeTime {
