@@ -4,7 +4,7 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Slf4j
 @Component
-@ConditionalOnMissingBean(JwtProvider.class)
+@ConditionalOnProperty(value = "secret.jwt.test.enabled", havingValue = "false", matchIfMissing = true)
 public class JwtProductionProvider implements JwtProvider {
     private final JwtConfig.LifeTime timeConfig;
     private final JwtParser parser;

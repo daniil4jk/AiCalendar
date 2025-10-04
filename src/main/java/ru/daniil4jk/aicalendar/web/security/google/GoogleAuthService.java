@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.daniil4jk.aicalendar.db.user.UserEntity;
 import ru.daniil4jk.aicalendar.db.user.UserEntityRepository;
-import ru.daniil4jk.aicalendar.web.security.jwt.JwtProductionProvider;
+import ru.daniil4jk.aicalendar.web.security.jwt.JwtProvider;
 import ru.daniil4jk.aicalendar.web.security.user.UserPrincipalService;
 
 import java.util.UUID;
@@ -21,7 +21,7 @@ public class GoogleAuthService {
     private final UserPrincipalService detailsService;
     private final UserEntityRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtProductionProvider tokenProvider;
+    private final JwtProvider tokenProvider;
     private final GoogleIdTokenVerifier googleTokenVerifier;
 
     @Transactional

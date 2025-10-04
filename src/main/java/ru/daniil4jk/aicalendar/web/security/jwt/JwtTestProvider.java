@@ -1,12 +1,10 @@
 package ru.daniil4jk.aicalendar.web.security.jwt;
 
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(value = "secret.jwt.test", havingValue = "true", matchIfMissing = false)
-@AutoConfigureBefore(JwtProductionProvider.class)
+@ConditionalOnProperty(value = "secret.jwt.test.enabled", havingValue = "true", matchIfMissing = false)
 public class JwtTestProvider implements JwtProvider{
     private final String acceptableToken;
     private final String username;
