@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 import ru.daniil4jk.aicalendar.db.event.*;
 import ru.daniil4jk.aicalendar.db.user.UserEntity;
-import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
+import ru.daniil4jk.aicalendar.web.security.user.UserPrincipal;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -87,6 +87,6 @@ public class EventFunctions {
                         .getAuthentication()
                         .getPrincipal();
 
-        return principal.inherit();
+        return principal.getInherit();
     }
 }

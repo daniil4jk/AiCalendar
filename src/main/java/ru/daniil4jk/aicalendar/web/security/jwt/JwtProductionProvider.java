@@ -5,9 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.stereotype.Component;
-import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
 
 import javax.crypto.SecretKey;
 import java.time.Instant;
@@ -16,7 +14,7 @@ import java.util.Date;
 @Slf4j
 @Component
 @ConditionalOnMissingBean(JwtProvider.class)
-public class JwtProductionProvider {
+public class JwtProductionProvider implements JwtProvider {
     private final JwtConfig.LifeTime timeConfig;
     private final JwtParser parser;
     private final SecretKey key;
@@ -29,12 +27,12 @@ public class JwtProductionProvider {
                 .build();
     }
 
-    public String generateToken(UserPrincipal principal) {
+    public String generateToken(String username) {
         Instant now = Instant.now();
         Instant expiry = now.plus(timeConfig.getValue(), timeConfig.getUnit());
 
         return Jwts.builder()
-                .subject(principal.getUsername())
+                .subject(username)
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(expiry))
                 .signWith(key)

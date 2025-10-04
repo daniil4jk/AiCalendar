@@ -7,7 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import ru.daniil4jk.aicalendar.db.event.EventLocalizedDto;
 import ru.daniil4jk.aicalendar.db.event.EventService;
-import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
+import ru.daniil4jk.aicalendar.web.security.user.UserPrincipal;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,7 +25,7 @@ public class CalendarController {
             @RequestParam("fromDate") LocalDate from,
             @RequestParam("toDate") LocalDate to
     ) {
-        return ResponseEntity.ok(service.getFor(user.inherit(), from, to));
+        return ResponseEntity.ok(service.getFor(user.getInherit(), from, to));
     }
 
     @PostMapping
@@ -34,7 +34,7 @@ public class CalendarController {
             @AuthenticationPrincipal UserPrincipal user,
             @RequestBody EventLocalizedDto dto
     ) {
-        return ResponseEntity.ok(service.post(user.inherit(), dto));
+        return ResponseEntity.ok(service.post(user.getInherit(), dto));
     }
 
     @PatchMapping("/{eventId}")
@@ -44,7 +44,7 @@ public class CalendarController {
             @RequestBody EventLocalizedDto dto,
             @PathVariable Long eventId
     ) {
-        service.patch(user.inherit(), dto, eventId);
+        service.patch(user.getInherit(), dto, eventId);
     }
 
     @DeleteMapping("/{eventId}")
@@ -53,6 +53,6 @@ public class CalendarController {
             @AuthenticationPrincipal UserPrincipal user,
             @PathVariable Long eventId
     ) {
-        service.delete(user.inherit(), eventId);
+        service.delete(user.getInherit(), eventId);
     }
 }

@@ -9,8 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.daniil4jk.aicalendar.db.user.UserEntity;
 import ru.daniil4jk.aicalendar.db.user.UserEntityRepository;
-import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
 import ru.daniil4jk.aicalendar.web.security.jwt.JwtProductionProvider;
+import ru.daniil4jk.aicalendar.web.security.user.UserPrincipalService;
 
 import java.util.UUID;
 
@@ -18,6 +18,7 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 public class GoogleAuthService {
+    private final UserPrincipalService detailsService;
     private final UserEntityRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProductionProvider tokenProvider;
@@ -31,9 +32,7 @@ public class GoogleAuthService {
                 .or(() -> userRepository.findByOauth2Id(payload.getSubject()))
                 .orElseGet(() -> registerNewUser(payload));
 
-        UserPrincipal principal = new UserPrincipal(user);
-
-        return tokenProvider.generateToken(principal);
+        return tokenProvider.generateToken(user.getName());
     }
 
     private GoogleIdToken.Payload getTokenPayload(String idToken) throws IllegalArgumentException {

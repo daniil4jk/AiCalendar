@@ -3,7 +3,7 @@ package ru.daniil4jk.aicalendar.web.security.jwt;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
+import ru.daniil4jk.aicalendar.web.security.user.UserPrincipal;
 
 import java.util.Collection;
 

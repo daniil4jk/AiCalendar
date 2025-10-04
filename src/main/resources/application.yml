@@ -16,7 +16,7 @@ spring:
       client-secret: ${GIGACHAT_CLIENT_SECRET}
       chat:
         options:
-          model: GigaChat-2-Pro
+          model: GigaChat-2
 
   output:
     ansi:

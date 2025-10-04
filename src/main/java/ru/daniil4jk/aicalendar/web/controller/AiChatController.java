@@ -14,7 +14,7 @@ import ru.daniil4jk.aicalendar.db.chat.ChatService;
 import ru.daniil4jk.aicalendar.db.message.MessageDto;
 import ru.daniil4jk.aicalendar.db.message.MessageMapper;
 import ru.daniil4jk.aicalendar.db.message.MessageService;
-import ru.daniil4jk.aicalendar.db.user.UserPrincipal;
+import ru.daniil4jk.aicalendar.web.security.user.UserPrincipal;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class AiChatController {
     @SecurityRequirement(name = "JWT")
     public ResponseEntity<List<ChatId>> getChats(@AuthenticationPrincipal UserPrincipal user) {
         return ResponseEntity.ok(
-                chatService.getChats(user.inherit())
+                chatService.getChats(user.getInherit())
                         .stream()
                         .map(chatMapper::toId)
                         .toList()
@@ -44,7 +44,7 @@ public class AiChatController {
     public ResponseEntity<List<MessageDto>> getChat(@AuthenticationPrincipal UserPrincipal user,
                                                     @PathVariable Long chatId) {
         return ResponseEntity.ok(
-                chatService.getMessages(user.inherit(), chatId)
+                chatService.getMessages(user.getInherit(), chatId)
                         .stream()
                         .map(messageMapper::toDto)
                         .toList()
@@ -65,7 +65,7 @@ public class AiChatController {
                                                 @RequestBody MessageText message) {
         return ResponseEntity.ok(
                 aiService.sendMessage(
-                        user.inherit(),
+                        user.getInherit(),
                         new MessageDto(null, message.text(), MessageType.USER, chatId)
                 )
         );
@@ -77,7 +77,7 @@ public class AiChatController {
                                                    @PathVariable Long messageId,
                                                    @RequestBody MessageText message) {
         return ResponseEntity.ok(messageMapper.toDto(
-                messageService.patch(user.inherit(), messageId, message.text())
+                messageService.patch(user.getInherit(), messageId, message.text())
         ));
     }
 
@@ -85,7 +85,7 @@ public class AiChatController {
     @SecurityRequirement(name = "JWT")
     public ResponseEntity<Object> deleteMessage(@AuthenticationPrincipal UserPrincipal user,
                                                 @PathVariable Long messageId) {
-        messageService.delete(user.inherit(), messageId);
+        messageService.delete(user.getInherit(), messageId);
         return ResponseEntity.ok().build();
     }
 
@@ -93,7 +93,7 @@ public class AiChatController {
     @SecurityRequirement(name = "JWT")
     public ResponseEntity<?> deleteChat(@AuthenticationPrincipal UserPrincipal user,
                                         @PathVariable Long chatId) {
-        chatService.delete(user.inherit(), chatId);
+        chatService.delete(user.getInherit(), chatId);
         return ResponseEntity.ok().build();
     }
 
