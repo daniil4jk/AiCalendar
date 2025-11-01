@@ -4,7 +4,6 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -13,13 +12,12 @@ import java.util.Date;
 
 @Slf4j
 @Component
-@ConditionalOnProperty(value = "secret.jwt.test.enabled", havingValue = "false", matchIfMissing = true)
-public class JwtProductionProvider implements JwtProvider {
+public class JwtProdProviderImpl implements JwtProvider {
     private final JwtConfig.LifeTime timeConfig;
     private final JwtParser parser;
     private final SecretKey key;
 
-    public JwtProductionProvider(JwtConfig config) {
+    public JwtProdProviderImpl(JwtConfig config) {
         this.timeConfig = config.getLifeTime();
         this.key = Keys.hmacShaKeyFor(config.getSigningKey().getBytes());
         this.parser = Jwts.parser()

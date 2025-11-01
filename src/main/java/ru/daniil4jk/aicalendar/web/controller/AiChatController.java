@@ -39,15 +39,28 @@ public class AiChatController {
         );
     }
 
+    //Переписать нафиг когда-нибудь, когда до сдачи будет не 11 дней, а точнее после сдачи
+    //TODO переместить в messageRepository
     @GetMapping("/{chatId}")
     @SecurityRequirement(name = "JWT")
-    public ResponseEntity<List<MessageDto>> getChat(@AuthenticationPrincipal UserPrincipal user,
+    public ResponseEntity<List<MessageDto>> getChatHistory(@AuthenticationPrincipal UserPrincipal user,
                                                     @PathVariable Long chatId) {
         return ResponseEntity.ok(
                 chatService.getMessages(user.getInherit(), chatId)
                         .stream()
                         .map(messageMapper::toDto)
                         .toList()
+        );
+    }
+
+    @GetMapping("/{chatId}/message/last")
+    @SecurityRequirement(name = "JWT")
+    public ResponseEntity<MessageDto> getLastMessage(@AuthenticationPrincipal UserPrincipal user,
+                                                     @PathVariable Long chatId) {
+        return ResponseEntity.ok(
+                messageMapper.toDto(
+                        messageService.getLastMessage(user.getInherit(), chatId)
+                )
         );
     }
 

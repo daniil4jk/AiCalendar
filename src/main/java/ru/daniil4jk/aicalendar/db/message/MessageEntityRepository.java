@@ -16,5 +16,5 @@ public interface MessageEntityRepository extends JpaRepository<MessageEntity, Lo
 
     Optional<MessageEntity> findByIdAndChat_User(Long id, UserEntity user);
 
-    MessageEntity deleteByIdAndChat_Id(Long id, Long chatId);
+    Optional<MessageEntity> findFirstByChat_IdAndChat_UserOrderByIdDesc(Long id, UserEntity user);
 }

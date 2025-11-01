@@ -9,8 +9,8 @@
       </developerToolConfiguration>
       <developerToolConfiguration developerToolId="base64-encoder-decoder" id="6fc413db-d0a6-49dd-83df-2f9fbdd81472" name="Workbench">
         <properties>
-          <property key="sourceText" type="INPUT" value="kotlin.String|65542990-89fe-480c-b759-cbf5fd500ba4:45d28f1d-69cb-4506-8619-566b2c83e931" />
-          <property key="targetText" type="INPUT" value="kotlin.String|NjU1NDI5OTAtODlmZS00ODBjLWI3NTktY2JmNWZkNTAwYmE0OjQ1ZDI4ZjFkLTY5Y2ItNDUwNi04NjE5LTU2NmIyYzgzZTkzMQ==" />
+          <property key="sourceText" type="INPUT" value="kotlin.String|22f1ceab-6957-4ab4-a3d3-aa390b0feb7d:54bed35a-033a-4101-a513-28a04bec0fc2" />
+          <property key="targetText" type="INPUT" value="kotlin.String|MjJmMWNlYWItNjk1Ny00YWI0LWEzZDMtYWEzOTBiMGZlYjdkOjU0YmVkMzVhLTAzM2EtNDEwMS1hNTEzLTI4YTA0YmVjMGZjMg==" />
         </properties>
       </developerToolConfiguration>
     </developerToolsConfigurations>

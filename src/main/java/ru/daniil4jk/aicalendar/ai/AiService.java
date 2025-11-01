@@ -60,12 +60,12 @@ public class AiService {
                 );
     }
 
+    //Переписать нафиг когда-нибудь, когда до сдачи будет не 11 дней, а точнее после сдачи
+    //TODO заменить на Spring Expression Language проверку доступа
     private void controlChatAccess(UserEntity user, ChatEntity chat) {
         if (!chat.getUser().getId().equals(user.getId())) {
             throw new SecurityException("user %s has`nt access to chat %s".formatted(user, chat));
         }
     }
-
-
 }
 

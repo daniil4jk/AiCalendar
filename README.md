@@ -16,13 +16,8 @@
     - GIGACHAT_CLIENT_ID
     - GIGACHAT_CLIENT_SECRET
 - ### JWT
-    - #### Production
-        - JWT_SIGNING_KEY - your random UUID key for sign JWTs
-    - #### Testing
-        Test mode is a special mode in which the application accepts only the JWT key 
-        specified in TEST_JWT_KEY
-        - TEST_MODE_ENABLED - boolean. enabling test mode
-        - TEST_JWT_KEY - Any combination of characters that the application will accept as JWT key
+    - JWT_SIGNING_KEY - your random UUID key for sign JWTs
+    - TEST_JWT_KEY - Any combination of characters that the application will accept as JWT key
 - ### Google
     - GOOGLE_CLOUD_CLIENT_ID - Used for android authentication. It can also be used for 
         authentication via [Google OAuth 2.0 Playground](https://developers.google.com/oauthplayground/)
